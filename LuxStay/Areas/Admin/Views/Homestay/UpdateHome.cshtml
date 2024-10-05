@@ -1,0 +1,132 @@
+﻿@model dynamic
+@{
+        Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel=stylesheet type="/text/css" href="http://localhost:8080/HomeMie/css/style.css">
+    <link rel=stylesheet type="/text/css" href="http://localhost:8080/HomeMie/css/form.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+
+<body>
+    <h3 style="text-align: center;">Cập nhập khách sạn</h3>
+    <section style="padding-top: 20px">
+        <div class="container">
+
+            <form action="/Admin/ManagerHomestay/UpdateHomestay" method="post">
+                <div class="row">
+                    <div class="col-lg-4">
+
+                        <div class="form-group col">
+                            <label>Ảnh (Imgae URL)</label>
+                            <input type="text" class="form-control" name="image_intro" required value="@Model.home.image_intro" />
+                        </div>
+
+                        <div class="form-group col">
+                            <label>Tên Homestay</label>
+                            <input type="text" class="form-control" name="home_name" required value="@Model.home.home_name" />
+                        </div>
+
+                        <div class="form-group col">
+                            <label>Địa điểm</label><br />
+                            <select name="place" style="padding-right: 60px; font-size: 18px; padding-top: 5px; padding-bottom: 5px; border-radius: 3px; border-color: darkgrey;">
+
+                                <option id="DN" value="DN">Thành Phố Đà Nẵng</option>
+                                <option id="HN" value="HN">Thành Phố Hà Nội</option>
+                                <option id="NT" value="NT">Thành Phố Nha Trang</option>
+                                <option id="SG" value="SG">Thành Phố Hồ Chí Minh</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Miêu tả ngắn</label>
+                            <input type="text" class="form-control" name="short_description" required value="@Model.home.short_description" />
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4">
+
+                        <div class="form-group col">
+                            <label>Giá phòng / đêm - đơn vị: (VNĐ)</label>
+                            <input type="text" class="form-control" name="price" required placeholder="ví dụ: 1,000,000" value="@Model.home.price" />
+                        </div>
+                        <div class="form-group col">
+                            <label>Số phòng ngủ</label>
+                            <input type="text" class="form-control" name="room_number" required value="@Model.home.room_number" />
+                        </div>
+                        <div class="form-group col">
+                            <label>Loại hình cho thuê</label><br />
+                            <select name="home_type" style="padding-right: 135px; font-size: 18px; padding-top: 5px; padding-bottom: 5px; border-radius: 3px; border-color: darkgrey;">
+                                <option id="PhongDon" value="Phòng Đơn">Phòng Đơn</option>
+                                <option id="PhongDoi" value="Phòng Đôi">Phòng Đôi</option>
+                                <option id="Deluxe" value="Phòng Deluxe">Phòng Deluxe</option>
+                                <option id="studio" value="Phòng Studio">Phòng Studio</option>
+                                <option id="Standard" value="Phòng Standard">Phòng Standard</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Miêu tả chi tiết</label>
+                            <input type="text" class="form-control" name="detail_description" required value="@Model.home.detail_description" />
+                        </div>
+
+                    </div>
+
+                    <div>
+                        @{
+                            int i = 0;
+                        }
+
+                        @foreach (var image in Model.imagesDetails)
+                        {
+                            i++;
+                            <div class="form-group">
+                                <label>Ảnh miêu tả @i (Imgae URL)</label>
+                                <input type="text" class="form-control" name="image_@i" required value="@image.image_url" />
+                            </div>
+                        }
+
+
+                        <div class="form-group">
+                            <label>Địa chỉ cụ thể</label>
+                            <input type="text" class="form-control" name="address" required value="@Model.home.address" />
+                        </div>
+
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <input type="text" class="form-control" name="home_id" style="display: none" value="@Model.home.home_id" />
+                    <br />
+                    <button type="submit" class="btn btn-success" style="margin-top: 2px;">Cập Nhật</button>
+                </div>
+            </form>
+            <br />
+        </div>
+
+    </section>
+
+    <script>
+        let place = "@Model.home.place.place_id";
+        document.getElementById(place).setAttribute("selected", "selected");
+        let home_type = "@ViewBag.home_type";
+        document.getElementById(home_type).setAttribute("selected", "selected");
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

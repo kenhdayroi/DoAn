@@ -1,0 +1,49 @@
+﻿body {
+}
+
+.carousel-item img {
+    border-radius: 10px;
+}
+
+.card img {
+    border-radius: 10px;
+}
+
+.service__item {
+    position: relative;
+}
+
+.address_title p {
+    position: absolute;
+    top: 245px;
+    left: 30px;
+    color: white;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.address_title span {
+    position: absolute;
+    top: 290px;
+    left: 30px;
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.room {
+    margin-top: -15px;
+    margin-left: -18px;
+    color: #767676;
+    font-size: 15px;
+}
+
+.price_and_address {
+    font-weight: bold;
+    margin-left: -18px;
+    margin-top: -15px;
+}
+
+footer {
+    text-align: center;
+}

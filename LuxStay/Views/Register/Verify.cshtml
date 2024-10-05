@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Verify</title>
+    <link rel="stylesheet" href="~/css/verify.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<body>
+    <div class="container text-center">
+        <div class="content-404">
+            <img src="images/404/404.png" class="img-responsive" alt="" />
+            <h3>Chào Mừng Đến Với LuxStay</h3>
+            <p style="font-size: 18px;">
+                Chúng tôi đã gửi tới mã xác nhận đến
+                <span style="font-weight: bold;">@(Context.Session.GetString("emailRegister") ?? string.Empty)</span>
+            </p>
+        </div>
+    </div>
+    <div style="font-size: 17px; text-align: center;">
+        <form asp-action="Verify" method="post">
+            <input class="auth-form-input" type="text" name="code"
+                   placeholder="Nhập mã xác nhận" required="required" />
+            <input type="submit" value="Xác nhận" />
+        </form>
+        <br />
+    </div>
+</body>
+</html>

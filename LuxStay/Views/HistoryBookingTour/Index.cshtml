@@ -1,0 +1,43 @@
+﻿@model List<dynamic>
+
+@{
+    ViewData["Title"] = "Lịch sử đặt tour";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID Booking</th>
+            <th>Tên Tour</th>
+            <th>Ngày đặt</th>
+            <th>Tổng giá</th>
+            <th>Số người</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                var booking = item.booking;
+                var tour = item.TourInfo;
+
+                <tr>
+                    <td>@booking.booking_tour_id</td>
+                    <td>@tour.tour_name</td> <!-- Hiển thị tên tour -->
+                    <td>@booking.date_booking.ToString("dd/MM/yyyy")</td>
+                    <td>@booking.total_price.ToString("C")</td>
+                    <td>@booking.people</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">Không có dữ liệu đặt tour.</td>
+            </tr>
+        }
+    </tbody>
+</table>

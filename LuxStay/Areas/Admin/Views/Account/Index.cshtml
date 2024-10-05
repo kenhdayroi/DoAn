@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quản Lý Tài Khoản</title>
+    <link rel="stylesheet" href="~/css/paging.css">
+</head>
+
+<body>
+    <span style="margin-top: 10px; font-size: 20px;">Quản Lý Tài Khoản</span>
+    <span style="margin-left: 850px;">
+        <a href="/Admin/Account/InsertAccount" type="button" class="btn btn-info" style="padding: 2px 7px 2px 7px;">Thêm Mới</a>
+    </span>
+    <section style="margin-top: 20px">
+        <div class="container">
+            <table class="table" style="font-size: 14px;">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Verify</th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in ViewBag.users)
+                    {
+                        <tr>
+                            <td>@user.email</td>
+                            <td>@user.phone</td>
+                            <td>@user.name</td>
+                            <td>@user.address</td>
+                            <td>@user.role</td>
+                            <td>@user.verify</td>
+                            <td>
+                                <a href="/Admin/Account/UpdateAccount?user_id=@user.user_id" type="button" class="btn btn-warning" style="padding: 2px 7px;">Sửa</a>
+                                <a href="/Admin/ManagerAccount/DeleteAccount?user_id=@user.user_id" type="button" class="btn btn-danger" style="padding: 2px 7px;">Xóa</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html>

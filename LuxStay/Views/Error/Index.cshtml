@@ -1,0 +1,22 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="container text-center">
+        <div class="content-404">
+            <img src="images/404/404.png" class="img-responsive" alt="" />
+            <h3><b>Xin Lỗi Quý Khách!</b></h3>
+            <p>Có vẻ như bạn đang gặp lỗi gì đó khi trải nghiệm trên website của chúng tôi. Xin lỗi vì sự bất tiện này.</p>
+            <h3>@Html.ActionLink("Đưa Tôi Trở Lại Trang Chủ", "Index", "Home")</h3>
+        </div>
+    </div>
+</body>
+</html>

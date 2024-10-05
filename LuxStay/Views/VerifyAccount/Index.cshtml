@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Verify</title>
+    <link rel="stylesheet" href="~/css/verify.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<body>
+    <div class="container text-center">
+        <div class="content-404">
+            <img src="images/404/404.png" class="img-responsive" alt="" />
+            <h3>Chào Mừng Đến Với Luxstay</h3>
+            <p style="font-size: 18px;">
+                Chúng tôi đã gửi tới mã xác nhận đến
+                <span style="font-weight: bold;">@Context.Session.GetString("emailRegister")</span>
+            </p>
+
+        </div>
+    </div>
+    <div style="font-size: 17px; text-align: center;">
+        <i style="font-size: 18px; color: red; margin-left: -35px;" class="fa">&#xf071;</i>
+        <span style="margin-left: 2px; color: red;">@ViewBag.verify_fail</span>
+        <p style="margin-top: -12px;"></p>
+        <form asp-controller="VerifyAccount" method="POST">
+            <input class="auth-form-input" type="text" name="code" placeholder="Nhập mã xác nhận" required="required" />
+            <input type="submit" value="Xác nhận" />
+        </form>
+        <br />
+        <span>
+            không nhận được mã xác nhận?
+            <a asp-controller="VerifyAccount" asp-action="ResendMail">Gửi lại ở đây.</a>
+        </span>
+    </div>
+</body>
+</html>

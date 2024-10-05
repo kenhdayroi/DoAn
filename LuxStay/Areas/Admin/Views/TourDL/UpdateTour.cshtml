@@ -1,0 +1,85 @@
+﻿@model LuxStay.Models.Tour
+
+<h2 style="text-align: center;">Sửa Tour</h2>
+
+<form action="/Admin/TourDL/UpdateTour" method="post">
+    <input type="hidden" asp-for="tour_id" />
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Tên Tour:</label>
+                    <input asp-for="tour_name" class="form-control" required placeholder="Nhập tên tour" />
+                </div>
+                <div class="form-group">
+                    <label>Loại Tour:</label>
+                    <input asp-for="tour_type" class="form-control" required placeholder="Nhập loại tour" />
+                </div>
+                <div class="form-group">
+                    <label>Số người:</label>
+                    <input asp-for="tour_number" type="number" class="form-control" required placeholder="Nhập số người" />
+                </div>
+                <div class="form-group">
+                    <label>Giá:</label>
+                    <input asp-for="price" type="number" class="form-control" required placeholder="Nhập giá" />
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Địa điểm:</label>
+                    <select asp-for="place_id" asp-items="@(new SelectList(ViewBag.Places, "place_id", "place_name"))" class="form-control" required>
+                        <option value="">Chọn địa điểm</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Hình ảnh:</label>
+                    <input asp-for="image" class="form-control" required placeholder="Nhập URL hình ảnh" />
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ:</label>
+                    <input asp-for="address" class="form-control" required placeholder="Nhập địa chỉ" />
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Mô tả ngắn:</label>
+                    <input asp-for="short_description" class="form-control" required placeholder="Nhập mô tả ngắn" />
+                </div>
+                <div class="form-group">
+                    <label>Mô tả chi tiết:</label>
+                    <textarea asp-for="detail_description" class="form-control" required placeholder="Nhập mô tả chi tiết" style="height: 150px;"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-warning btn-lg">Cập nhật Tour</button>
+        </div>
+    </div>
+</form>
+
+<style>
+    .form-control {
+        height: 45px; 
+    }
+
+    .btn-lg {
+        padding: 10px 20px; 
+    }
+
+    h2 {
+        margin-bottom: 20px; 
+    }
+
+    .form-group label {
+        font-weight: bold;
+    }
+
+    .container {
+        max-width: 1200px; 
+        margin: auto; 
+    }
+</style>

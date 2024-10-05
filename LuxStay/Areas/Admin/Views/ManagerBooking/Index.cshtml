@@ -1,0 +1,130 @@
+﻿@using LuxStay.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/infohome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <title>Title of the document</title>
+</head>
+
+<body>
+    <h4 style="margin-top: 10px;">Quản Lí Đặt Chỗ</h4>
+    <section style="margin-top: 20px">
+        <div class="container">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Ảnh</th>
+                        <th scope="col">Thông tin chi tiết</th>
+                        <th scope="col">Thông tin người đặt</th>
+                        <th scope="col">Ngày thuê</th>
+                        <th scope="col">Ngày trả</th>
+                        <th scope="col">Tổng tiền thuê</th>
+                        <th scope="col">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.bookings != null)
+                    {
+                        foreach (Booking booking in ViewBag.bookings)
+                        {
+                            string date_check_in = String.Format("{0:dd/MM/yyyy}", booking.date_check_in);
+                            string date_check_out = String.Format("{0:dd/MM/yyyy}", booking.date_check_out);
+
+                            <tr>
+                                <th scope="row"><a href="../Detail?home_id=@booking.home.home_id"><img src="~/images/product/@booking.home.image_intro" style="height: 90px; width: 130px; margin-right: 20px;" /></a></th>
+                                <th scope="row" style="vertical-align: middle;">
+                                    <p class="room" style="margin-top: 10px;">@booking.home.home_type - @booking.home.room_number phòng ngủ</p>
+                                    <svg style="margin-left: -20px; color: #F65E39;"
+                                         xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-lightning-fill" viewBox="0 0 16 16">
+                                        <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5z" />
+                                    </svg><p style="margin-top: -25px; margin-bottom: 20px;">*@booking.home.home_name*</p>
+                                    @{
+                                        int price = booking.home.price;
+                                        int million = price / 1000000;
+                                        int hundred = price % 1000000 / 1000;
+
+                                        if (million > 0)
+                                        {
+                                            if (hundred > 0)
+                                            {
+                                                <p class="price_and_address">@million,@hundred,000đ/đêm - @booking.home.address</p>
+                                            }
+                                            else
+                                            {
+                                                <p class="price_and_address">@million,000,000đ/đêm - @booking.home.address</p>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <p class="price_and_address">@hundred,000đ/đêm - @booking.home.address</p>
+                                        }
+                                    }
+                                </th>
+                                <td style="vertical-align: middle;">
+                                    <p style="margin-top: 10px;">Người đặt: @booking.user.name</p>
+                                    <p>Email: @booking.user.email</p>
+                                    <p>Số điện thoại: @booking.user.phone</p>
+                                </td>
+                                <td style="vertical-align: middle;">@date_check_in</td>
+                                <td style="vertical-align: middle;">@date_check_out</td>
+                                @{
+                                    int total_price = booking.total_price;
+                                    int million_total = total_price / 1000000;
+                                    int hundred_total = total_price % 1000000 / 1000;
+
+                                    if (million > 0)
+                                    {
+                                        if (hundred > 0)
+                                        {
+                                            <td style="font-weight: bold; vertical-align: middle;">@million_total,@hundred_total,000 VNĐ</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="font-weight: bold; vertical-align: middle;">@million_total,000,000 VNĐ</td>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <td style="font-weight: bold; vertical-align: middle;">@hundred_total,000 VNĐ</td>
+                                    }
+                                }
+                                <td style="vertical-align: middle;">
+                                    @if (booking.home.status == 0)
+                                    {
+                                        <span class="btn btn-sm" style="background-color: #28A745; color: white;">
+                                            Hoàn Tất
+                                        </span>
+                                    }
+                                    @if (booking.home.status == 1)
+                                    {
+                                        <span class="btn btn-sm" style="background-color: #FFC107; color: white;">
+                                            Đang Thuê
+                                        </span>
+                                    }
+                                    @if (booking.home.status == 2)
+                                    {
+                                        <a class="btn btn-sm" href="../ManagerBooking/Cancel?booking_id=@booking.booking_id" style="background-color: #f65e38; color: white;">
+                                            Huỷ Phòng
+                                        </a>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+
+
+        </div>
+    </section>
+
+</body>
+</html>
+

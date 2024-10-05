@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35312.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuxStay", "LuxStay\LuxStay.csproj", "{07664DCE-42A9-4D0E-92B2-2AD601BDE4E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07664DCE-42A9-4D0E-92B2-2AD601BDE4E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07664DCE-42A9-4D0E-92B2-2AD601BDE4E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07664DCE-42A9-4D0E-92B2-2AD601BDE4E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07664DCE-42A9-4D0E-92B2-2AD601BDE4E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4895E622-B365-4085-A17B-B4C7B13BD69D}
+	EndGlobalSection
+EndGlobal

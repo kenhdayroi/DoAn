@@ -1,0 +1,123 @@
+﻿@{
+        Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel=stylesheet type="/text/css" href="http://localhost:8080/HomeMie/css/style.css">
+    <link rel=stylesheet type="/text/css" href="http://localhost:8080/HomeMie/css/form.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+</head>
+
+<body>
+    <h3 style="text-align: center;">Thêm mới khách sạn</h3>
+    <section style="padding-top: 20px">
+        <div class="container">
+
+            <form action="/Admin/ManagerHomestay/InsertHomestay" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-lg-4">
+
+                        <div class="form-group col">
+                            <label for="exampleInputEmail1">Ảnh (Imgae URL)</label>
+                            <input type="file" class="form-control" name="image_intro" aria-describedby="emailHelp" required />
+                        </div>
+
+                        <div class="form-group col">
+                            <label>Tên Homestay</label>
+                            <input type="text" class="form-control" name="home_name" required />
+                        </div>
+
+                        <div class="form-group col">
+                            <label>Địa điểm</label><br />
+                            <select name="place" style="padding-right: 60px; font-size: 18px; padding-top: 5px; padding-bottom: 5px; border-radius: 3px; border-color: darkgrey;">
+                                <option value="DN">Thành Phố Đà Nẵng</option>
+                                <option value="HN">Thành Phố Hà Nội</option>
+                                <option value="NT">Thành Phố Nha Trang</option>
+                                <option value="SG">Thành Phố Hồ Chí Minh</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Miêu tả ngắn</label>
+                            <input type="text" class="form-control" name="short_description" required />
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4">
+
+                        <div class="form-group col">
+                            <label>Giá phòng / đêm - đơn vị: (VNĐ)</label>
+                            <input type="text" class="form-control" name="price" required placeholder="ví dụ: 1,000,000" />
+                        </div>
+                        <div class="form-group col">
+                            <label>Số phòng ngủ</label>
+                            <input type="text" class="form-control" name="room_number" required />
+                        </div>
+                        <div class="form-group col">
+                            <label>Loại hình cho thuê</label><br />
+                            <select name="home_type" style="padding-right: 135px; font-size: 18px; padding-top: 5px; padding-bottom: 5px; border-radius: 3px; border-color: darkgrey;">
+                                <option id="PhongDon" value="Phòng Đơn">Phòng Đơn</option>
+                                <option id="PhongDoi" value="Phòng Đôi">Phòng Đôi</option>
+                                <option id="Deluxe" value="Phòng Deluxe">Phòng Deluxe</option>
+                                <option id="studio" value="Phòng Studio">Phòng Studio</option>
+                                <option id="Standard" value="Phòng Standard">Phòng Standard</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Miêu tả chi tiết</label>
+                            <input type="text" class="form-control" name="detail_description" required />
+                        </div>
+
+                    </div>
+
+                    <div>
+
+                        <div class="form-group">
+                            <label>Ảnh miêu tả 1 (Imgae URL)</label>
+                            <input type="text" class="form-control" name="image_1" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Ảnh miêu tả 2 (Imgae URL)</label>
+                            <input type="text" class="form-control" name="image_2" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Ảnh miêu tả 3 (Imgae URL)</label>
+                            <input type="text" class="form-control" name="image_3" required />
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ cụ thể</label>
+                            <input type="text" class="form-control" name="address" required />
+                        </div>
+
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <input type="text" class="form-control" name="id" style="display: none" />
+                    <br />
+                    <button type="submit" class="btn btn-success" style="margin-top: 2px;">Thêm Mới</button>
+                </div>
+            </form>
+            <br />
+        </div>
+
+    </section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>

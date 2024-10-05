@@ -1,0 +1,47 @@
+﻿@model List<LuxStay.Models.BookingTour>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title of the document</title>
+    <link rel="stylesheet" href="~/css/paging.css">
+</head>
+
+<body>
+    <span style="margin-top: 10px; font-size: 20px;">Quản Lí Homestay</span>
+    <section style="margin-top: 20px">
+        <div class="container">
+            <table class="table" style="font-size: 11px;">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" style="vertical-align: middle;">Booking ID</th>
+                        <th scope="col" style="vertical-align: middle;">User ID</th>
+                        <th scope="col" style="vertical-align: middle;">Tour ID</th>
+                        <th scope="col" style="vertical-align: middle;">Date Booking</th>
+                        <th scope="col" style="vertical-align: middle;">Total Price</th>
+                        <th scope="col" style="vertical-align: middle;">People</th>
+                        <th scope="col" style="vertical-align: middle;">Tình trạng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var booking in Model)
+                    {
+                        <tr>
+                            <td style="vertical-align: middle;">@booking.booking_tour_id</td>
+                            <td style="vertical-align: middle;">@booking.user_id</td>
+                            <td style="vertical-align: middle;">@booking.tour_id</td>
+                            <td style="vertical-align: middle;">@booking.date_booking.ToShortDateString()</td>
+                            <td style="vertical-align: middle;">@booking.total_price</td>
+                            <td style="vertical-align: middle;">@booking.people</td>
+                            <td style="vertical-align: middle;">Đang chờ</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>

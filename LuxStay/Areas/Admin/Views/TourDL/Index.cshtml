@@ -1,0 +1,44 @@
+﻿@model List<LuxStay.Models.Tour>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2></h2>
+
+<span style="margin-top: 10px; font-size: 20px;">Danh sách Tours</span>
+
+<span style="margin-left: 850px;">
+    <a href="/Admin/TourDL/InsertTour" type="button" class="btn btn-info" style="padding: 2px 7px 2px 7px;">Thêm Mới</a>
+</span>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tên Tour</th>
+            <th>Loại Tour</th>
+            <th>Số người</th>
+            <th>Giá</th>
+            <th>Địa điểm</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tour in Model)
+        {
+            <tr>
+                <td>@tour.tour_id</td>
+                <td>@tour.tour_name</td>
+                <td>@tour.tour_type</td>
+                <td>@tour.tour_number</td>
+                <td>@tour.price</td>
+                <td>@tour.place_id</td>
+                <td>
+                    <a href="/Admin/TourDL/UpdateTour/@tour.tour_id" type="button" class="btn btn-warning" style="padding: 2px 7px;">Sửa</a>
+                    <a href="/Admin/TourDL/DeleteTour/@tour.tour_id" onclick="return confirm('Bạn có chắc chắn muốn xóa?');" type="button" class="btn btn-danger" style="padding: 2px 7px;">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

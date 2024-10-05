@@ -1,0 +1,88 @@
+﻿@using LuxStay.Models;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Title of the document</title>
+    <link rel="stylesheet" href="~/css/paging.css">
+</head>
+
+<body>
+    <span style="margin-top: 10px; font-size: 20px;">Khôi phục khách sạn</span>
+    <span style="margin-left: 850px;"><a href="/Admin/ManagerHomestay/InsertHomestay" type="button" class="btn btn-info" style="padding: 2px 7px 2px 7px;">Thêm Mới</a></span>
+    <section style="margin-top: 20px">
+        <div class="container">
+            <table class="table" style="font-size: 12px;">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" style="vertical-align: middle;">Ảnh</th>
+                        <th scope="col" style="vertical-align: middle;">Tên</th>
+                        <th scope="col" style="vertical-align: middle;">Địa điểm</th>
+                        <th scope="col" style="vertical-align: middle;">Giá phòng</th>
+                        <th scope="col" style="vertical-align: middle;">Số phòng ngủ</th>
+                        <th scope="col" style="vertical-align: middle;">Mô tả ngắn</th>
+                        <th scope="col" style="vertical-align: middle;">Mô tả chi tiết</th>
+                        <th scope="col" style="vertical-align: middle;">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (ViewBag.homes != null)
+                    {
+                        foreach (var home in ViewBag.homes)
+                        {
+                            <tr>
+                                <th style="vertical-align: middle;"><img src="~/images/product/@home.image_intro" style="height: 40px; width: 60px;" /></th>
+                                <th style="vertical-align: middle;">@home.home_name</th>
+                                <th style="vertical-align: middle;">@home.place.place_name</th>
+                                <th style="vertical-align: middle;">
+                                    @{
+                                        int price = home.price;
+                                        int million = price / 1000000;
+                                        int hundred = price % 1000000 / 1000;
+
+                                        if (million > 0)
+                                        {
+                                            if (hundred > 0)
+                                            {
+                                                <span class="price_and_address">@million,@hundred,000đ/đêm</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="price_and_address">@million,000,000đ/đêm</span>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <span class="price_and_address">@hundred,000đ/đêm</span>
+                                        }
+                                    }
+
+                                </th>
+                                <th style="vertical-align: middle;">@home.room_number phòng ngủ</th>
+                                <th style="vertical-align: middle;">
+                                    <span style="display: inline-block; width: 180px; white-space: nowrap; overflow: hidden !important; text-overflow: ellipsis;">@home.short_description</span>
+                                </th>
+                                <th style="vertical-align: middle;">
+                                    <span style="display: inline-block; width: 180px; white-space: nowrap; overflow: hidden !important; text-overflow: ellipsis;">@home.detail_description</span>
+                                </th>
+                                <th style="vertical-align: middle;">
+                                    <a href="/Admin/Restore/RestoreHomestay?home_id=@home.home_id" type="button" class="btn btn-warning" style="padding: 2px 7px 2px 7px;">Khôi Phục</a>
+                                    <a href="/Admin/Restore/ClearHomestay?home_id=@home.home_id" type="button" class="btn btn-danger" style="padding: 2px 7px 2px 7px;">Xóa</a>
+                                </th>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+
+
+</body>
+</html>
+

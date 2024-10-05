@@ -1,0 +1,24 @@
+﻿.header {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_link a {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.header a {
+    color: #222222;
+    font-weight: 700;
+}
+
+    .header a:hover {
+        color: #F65E39;
+        text-decoration: none;
+        cursor: pointer;
+    }
